@@ -1,6 +1,11 @@
 {
     "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
+    "C_Cpp.clang_format_fallbackStyle": "file",
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
     "files.associations": {
+        ".clang-format": "yaml",
         "*.json.in": "json",
         "*.vs.json.in": "json",
         "*.cmake.in": "cmake",
