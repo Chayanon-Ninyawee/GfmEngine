@@ -4,6 +4,7 @@
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format"
     },
+    "editor.formatOnSave": true,
     "files.associations": {
         ".clang-format": "yaml",
         "*.json.in": "json",

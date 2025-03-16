@@ -7,3 +7,4 @@ IndentCaseLabels: false
 ColumnLimit: 90
 BreakConstructorInitializers: BeforeComma
 ConstructorInitializerAllOnOneLineOrOnePerLine: false
+AccessModifierOffset: -4
