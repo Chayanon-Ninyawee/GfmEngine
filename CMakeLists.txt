@@ -4,6 +4,9 @@ cmake_minimum_required(VERSION 3.31)
 project(GfmEngine)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+# TODO: Maybe enable BUILD_DOCS later
+set(BUILD_DOCS OFF CACHE BOOL "Disable building documentation" FORCE)
+
 FetchContent_Declare(
     FLAC
     GIT_REPOSITORY https://github.com/xiph/flac.git
