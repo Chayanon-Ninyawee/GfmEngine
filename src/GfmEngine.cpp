@@ -1,41 +1,75 @@
-#include <SFML/Graphics.hpp>
-
 #include "GfmEngine.h"
 
-GfmEngine::GfmEngine() {
+#include <iostream>
+
+GfmEngine::GfmEngine(const std::string &title, unsigned int width, unsigned int height)
+    : windowTitle(title)
+    , windowWidth(width)
+    , windowHeight(height)
+    , isRunning(false)
+    , isStopped(true)
+{
 }
 
-GfmEngine::~GfmEngine() {
+GfmEngine::~GfmEngine()
+{
+    // TODO: Maybe remove this
+    stop();
 }
 
-bool GfmEngine::run() {
-    running = true;
+void GfmEngine::init()
+{
+    isStopped = false;
 
-    sf::RenderWindow window(sf::VideoMode({800, 600}), "Test window");
+    window = sf::RenderWindow(
+        sf::VideoMode({this->windowWidth, this->windowHeight}), this->windowTitle
+    );
     window.setVerticalSyncEnabled(true);
+}
 
-    sf::RectangleShape rectangle;
-    rectangle.setSize(sf::Vector2f(100, 50));
-    rectangle.setFillColor(sf::Color::Red);
-    rectangle.setOutlineThickness(0);
-    rectangle.setPosition({10, 20});
+void GfmEngine::processInput()
+{
+    // TODO: processInput: Not Implemented
+    std::cout << "processInput: Not Implemented" << std::endl;
+}
 
-    while (window.isOpen())
+void GfmEngine::stop()
+{
+    if (isStopped) return;
+
+    // TODO: stop: Not Implemented
+    std ::cout << "stop: Not Implemented" << std::endl;
+    isRunning = false;
+    isStopped = true;
+}
+
+void GfmEngine::run()
+{
+    init();
+    isRunning = true;
+
+    float deltaTime = 1.0f / 60.0f;  // Simulating 60 FPS
+    while (isRunning)
     {
-        // check all the window's events that were triggered since the last iteration of the loop
+        processInput();
+        update(deltaTime);
+
+        // TODO: Adapt the time to make the deltatime perfectly 1/60 second
+        sf::sleep(sf::seconds(deltaTime));
+
+        // check all the window's events that were triggered since the last iteration of
+        // the loop
         while (const std::optional event = window.pollEvent())
         {
             // "close requested" event: we close the window
-            if (event->is<sf::Event::Closed>())
-                window.close();
+            if (event->is<sf::Event::Closed>()) window.close();
         }
 
         window.clear(sf::Color::Black);
-
-        window.draw(rectangle);
-
+        render();
         window.display();
-    }
 
-    return true;
+        if (not window.isOpen()) isRunning = false;
+    }
+    stop();
 }

@@ -2,17 +2,30 @@
 
 #include <string>
 
-class GfmEngine {
+#include <SFML/Graphics.hpp>
+
+class GfmEngine
+{
 public:
-    // Constructor & Destructor
-    GfmEngine();
+    GfmEngine(const std::string &title, unsigned int width, unsigned int height);
     ~GfmEngine();
 
-    bool run();
+    void run();
 
-    // Getter Setter
-    bool isRunning() const { return running; }
-    
+    virtual void update(float deltaTime) = 0;
+    virtual void render() = 0;
+
+    // TODO: This is temporary
+    sf::RenderWindow window;
+
 private:
-    bool running { false };
+    void init();
+    void processInput();
+    void stop();
+
+    std::string windowTitle;
+    unsigned int windowWidth;
+    unsigned int windowHeight;
+    bool isRunning;
+    bool isStopped;
 };
