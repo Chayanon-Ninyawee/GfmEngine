@@ -5,7 +5,7 @@ IndentCaseLabels: false
 
 # Braces and function formatting
 BreakBeforeBraces: Allman
-AllowShortIfStatementsOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: true
 AllowShortFunctionsOnASingleLine: None
 
 # Constructor formatting
