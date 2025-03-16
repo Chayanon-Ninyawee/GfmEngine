@@ -2,33 +2,11 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Configure CMake (Debug)",
-            "type": "shell",
-            "command": "cmake",
-            "args": [
-                "-S", "@CMAKE_SOURCE_DIR@",
-                "-B", "@CMAKE_BINARY_DIR@",
-                "-DCMAKE_BUILD_TYPE=Debug"
-            ],
-            "problemMatcher": ["$gcc"]
-        },
-        {
-            "label": "Configure CMake (Release)",
-            "type": "shell",
-            "command": "cmake",
-            "args": [
-                "-S", "@CMAKE_SOURCE_DIR@",
-                "-B", "@CMAKE_BINARY_DIR@",
-                "-DCMAKE_BUILD_TYPE=Release"
-            ],
-            "problemMatcher": ["$gcc"]
-        },
-        {
             "label": "Build TestGfmEngine (Debug)",
             "type": "shell",
             "command": "cmake",
             "args": [
-                "--build", "@PROJECT_BINARY_DIR@",
+                "--build", "@CMAKE_BINARY_DIR@",
                 "--config", "Debug"
             ],
             "group": {
@@ -43,7 +21,7 @@
             "type": "shell",
             "command": "cmake",
             "args": [
-                "--build", "@PROJECT_BINARY_DIR@",
+                "--build", "@CMAKE_BINARY_DIR@",
                 "--config", "Release"
             ],
             "group": {

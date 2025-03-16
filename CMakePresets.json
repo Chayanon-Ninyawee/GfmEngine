@@ -1,0 +1,32 @@
+{
+    "version": 8,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 31,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "Ninja",
+            "displayName": "Ninja",
+            "generator": "Ninja Multi-Config",
+            "binaryDir": "${sourceDir}/build"
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "Debug",
+            "description": "Build using Debug configuration",
+            "displayName": "Debug",
+            "configurePreset": "Ninja",
+            "configuration": "Debug"
+        },
+        {
+            "name": "Release",
+            "description": "Build using Release configuration",
+            "displayName": "Release",
+            "configurePreset": "Ninja",
+            "configuration": "Release"
+        }
+    ]
+}
