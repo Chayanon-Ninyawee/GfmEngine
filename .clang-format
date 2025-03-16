@@ -1,10 +1,21 @@
+# Indentation settings
 UseTab: false
 IndentWidth: 4
+IndentCaseLabels: false
+
+# Braces and function formatting
 BreakBeforeBraces: Allman
 AllowShortIfStatementsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: None
-IndentCaseLabels: false
-ColumnLimit: 90
+
+# Constructor formatting
 BreakConstructorInitializers: BeforeComma
 ConstructorInitializerAllOnOneLineOrOnePerLine: false
+
+# Alignment and spacing
+AlignAfterOpenBracket: BlockIndent
+SpacesBeforeTrailingComments: 2
 AccessModifierOffset: -4
+
+# Line breaking and wrapping
+ColumnLimit: 90
