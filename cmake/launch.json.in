@@ -1,0 +1,31 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch TestGfmEngine (Debug)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "@PROJECT_BINARY_DIR@/@EXECUTABLE_NAME@",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "@PROJECT_BINARY_DIR@",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "preLaunchTask": "Build TestGfmEngine (Debug)"
+        },
+        {
+            "name": "Launch TestGfmEngine (Release)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "@PROJECT_BINARY_DIR@/@EXECUTABLE_NAME@",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "@PROJECT_BINARY_DIR@",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "preLaunchTask": "Build TestGfmEngine (Release)"
+        }
+    ]
+}
