@@ -35,7 +35,7 @@ To ensure compatibility, you can build the project inside an **Ubuntu 20.04 Dock
 Run the following command:
 
 ```sh
-./build-ubuntu20-docker.sh
+./build-using-docker.sh ubuntu20
 ```
 
 This script will:
@@ -54,7 +54,7 @@ If you are using **VS Code**, you can build the project using the built-in task 
 1. Open **Command Palette** (`Ctrl+Shift+P`).
 2. Select **Tasks: Run Task**.
 3. Choose one of the available build tasks:
-   - **`Build GfmEngineTest With Docker (Release)`** – Builds using the Docker-based approach. (This literally just run the shell script from above)
+   - **`Build GfmEngineTest With ubuntu20-docker (Release)`** – Builds using the Docker-based approach. (This literally just run the shell script from above)
    - **`Build GfmEngineTest (Release)`** – Builds on your local machine (may fail on other Linux distro if their GLIBC is too old).
    - **`Build GfmEngineTest (Debug)`** – Builds on your local machine in debug mode.
 
