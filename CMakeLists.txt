@@ -4,10 +4,6 @@ cmake_minimum_required(VERSION 3.28)
 project(GfmEngine)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# TODO: Maybe enable BUILD_DOCS later
-set(BUILD_DOCS OFF CACHE BOOL "Disable building documentation" FORCE)
-
-# set(BUILD_SHARED_LIBS OFF) # Force SFML to build statically
 # set(SFML_USE_STATIC_STD_LIBS ON CACHE BOOL "" FORCE) # Ensure SFML is built with static standard libs
 add_subdirectory(external/SFML)
 
