@@ -6,6 +6,7 @@
         "xaver.clang-format",
         "ms-vscode.cmake-tools",
         "josetr.cmake-language-support-vscode",
+        "ms-azuretools.vscode-docker",
         "codezombiech.gitignore",
         "gruntfuggly.todo-tree"
     ]
