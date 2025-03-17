@@ -76,3 +76,5 @@ However, you may need to configure CMake first before running and debugging.
 
 For a detailed log of problems encountered and fixes implemented during the development of this project, see [ProblemsFixed.md](docs/ProblemsFixed.md).  
 This document is intended for contributors who want to understand the technical problems and solutions related to the project setup, dependencies, and development workflow.
+
+See [Clang-Format Installation Guide](docs/clang-format.md) for installation instructions for newer clang-format version.
