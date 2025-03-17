@@ -2,6 +2,8 @@
 set -e  # Exit on error
 
 PROJECT_DIR="@CMAKE_SOURCE_DIR@"
+BUILD_DIR_PARENT="$PROJECT_DIR/docker-build/ubuntu20"
+BUILD_DIR="$BUILD_DIR_PARENT/build"
 CONTAINER_NAME="temp-container"
 IMAGE_NAME="gfmengine-builder-ubuntu20"
 
@@ -10,8 +12,13 @@ if [[ -z "$PROJECT_DIR" || "$PROJECT_DIR" == "/" ]]; then
     exit 1
 fi
 
+if [[ -z "$BUILD_DIR" || "$BUILD_DIR" == "/" ]]; then
+    echo "Error: BUILD_DIR is not set or invalid!"
+    exit 1
+fi
+
 # Build the Docker image
-docker build -t "$IMAGE_NAME" "$PROJECT_DIR"
+docker build -t "$IMAGE_NAME" -f "$PROJECT_DIR/docker-build/ubuntu20/Dockerfile" "$PROJECT_DIR"
 
 # Prune old images
 docker image prune -f
@@ -20,13 +27,12 @@ docker image prune -f
 docker run --name "$CONTAINER_NAME" "$IMAGE_NAME"
 
 # Ensure the build directory exists before deleting
-if [[ -d "$PROJECT_DIR/ubuntu20/build" ]]; then
-    rm -rf "$PROJECT_DIR/ubuntu20/build"
+if [[ -d "$BUILD_DIR" ]]; then
+    rm -rf "$BUILD_DIR"
 fi
-mkdir -p "$PROJECT_DIR/ubuntu20"
 
 # Copy build artifacts
-docker cp "$CONTAINER_NAME:/app/build" "$PROJECT_DIR/ubuntu20/build"
+docker cp "$CONTAINER_NAME:/app/build" "$BUILD_DIR_PARENT"
 
 # Clean up the container
 docker rm "$CONTAINER_NAME"
