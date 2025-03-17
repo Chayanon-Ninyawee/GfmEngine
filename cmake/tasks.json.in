@@ -38,9 +38,9 @@
             ]
         },
         {
-            "label": "Build GfmEngineTest With Docker (Release)",
+            "label": "Build GfmEngineTest With build-ubuntu20-docker (Release)",
             "type": "shell",
-            "command": "@CMAKE_SOURCE_DIR@/build-ubuntu20-docker.sh",
+            "command": "@CMAKE_SOURCE_DIR@/docker-build/ubuntu20/build-ubuntu20-docker.sh",
             "problemMatcher": []
         }
     ]

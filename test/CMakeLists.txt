@@ -31,7 +31,7 @@ configure_file(
 
 configure_file(
     ${CMAKE_SOURCE_DIR}/cmake/build-ubuntu20-docker.sh.in
-    ${CMAKE_SOURCE_DIR}/build-ubuntu20-docker.sh
+    ${CMAKE_SOURCE_DIR}/docker-build/ubuntu20/build-ubuntu20-docker.sh
     @ONLY
 )
-file(CHMOD ${CMAKE_SOURCE_DIR}/build-ubuntu20-docker.sh PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+file(CHMOD ${CMAKE_SOURCE_DIR}/docker-build/ubuntu20/build-ubuntu20-docker.sh PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
