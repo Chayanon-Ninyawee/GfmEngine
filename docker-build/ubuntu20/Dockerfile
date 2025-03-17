@@ -40,7 +40,12 @@ RUN wget -O cmake.sh https://github.com/Kitware/CMake/releases/download/v3.28.3/
 WORKDIR /app
 
 # Copy the project files into the container
-COPY . .
+COPY CMakeLists.txt .
+COPY cmake/ cmake/
+COPY src/ src/
+COPY include/ include/
+COPY test/ test/
+COPY external/ external/
 
 # Configure and build
 RUN rm -rf build && cmake -B build -G Ninja && cmake --build build --config Release
