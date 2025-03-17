@@ -8,7 +8,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     build-essential \
     wget \
-    git \
     g++ \
     ninja-build \
     libxrandr-dev \
@@ -41,11 +40,10 @@ WORKDIR /app
 
 # Copy the project files into the container
 COPY CMakeLists.txt .
-COPY cmake/ cmake/
 COPY src/ src/
 COPY include/ include/
 COPY test/ test/
 COPY external/ external/
 
 # Configure and build
-RUN rm -rf build && cmake -B build -G Ninja && cmake --build build --config Release
+RUN rm -rf build && cmake -B build -G Ninja -DGFMENGINE_GENERATE_VSCODE=OFF -DGFMENGINE_GENERATE_DOCKER_SCRIPT=OFF && cmake --build build --config Release

@@ -1,7 +1,7 @@
 .vscode/launch.json
 .vscode/tasks.json
 build/
-build-ubuntu20-docker.sh
+build-using-docker.sh
 
 # Prerequisites
 *.d

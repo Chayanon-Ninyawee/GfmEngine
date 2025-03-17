@@ -15,23 +15,30 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 
 set(EXECUTABLE_NAME ${PROJECT_NAME})
 
-# Generate launch.json for debugging
-configure_file(
-    ${CMAKE_SOURCE_DIR}/cmake/launch.json.in
-    ${CMAKE_SOURCE_DIR}/.vscode/launch.json
-    @ONLY
-)
+option(GFMENGINE_GENERATE_VSCODE "Generate VSCode configuration files" ON)
+option(GFMENGINE_GENERATE_DOCKER_SCRIPT "Generate Docker build script" ON)
 
-# Generate tasks.json for building before running
-configure_file(
-    ${CMAKE_SOURCE_DIR}/cmake/tasks.json.in
-    ${CMAKE_SOURCE_DIR}/.vscode/tasks.json
-    @ONLY
-)
+if(GFMENGINE_GENERATE_VSCODE)
+    # Generate launch.json for debugging
+    configure_file(
+        ${CMAKE_SOURCE_DIR}/cmake/launch.json.in
+        ${CMAKE_SOURCE_DIR}/.vscode/launch.json
+        @ONLY
+    )
 
-configure_file(
-    ${CMAKE_SOURCE_DIR}/cmake/build-ubuntu20-docker.sh.in
-    ${CMAKE_SOURCE_DIR}/docker-build/ubuntu20/build-ubuntu20-docker.sh
-    @ONLY
-)
-file(CHMOD ${CMAKE_SOURCE_DIR}/docker-build/ubuntu20/build-ubuntu20-docker.sh PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+    # Generate tasks.json for building before running
+    configure_file(
+        ${CMAKE_SOURCE_DIR}/cmake/tasks.json.in
+        ${CMAKE_SOURCE_DIR}/.vscode/tasks.json
+        @ONLY
+    )
+endif()
+
+if(GFMENGINE_GENERATE_DOCKER_SCRIPT)
+    configure_file(
+        ${CMAKE_SOURCE_DIR}/cmake/build-using-docker.sh.in
+        ${CMAKE_SOURCE_DIR}/build-using-docker.sh
+        @ONLY
+    )
+    file(CHMOD ${CMAKE_SOURCE_DIR}/build-using-docker.sh PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+endif()

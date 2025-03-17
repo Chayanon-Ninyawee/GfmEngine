@@ -1,0 +1,60 @@
+#!/bin/bash
+set -e  # Exit on error
+
+PROJECT_DIR="@CMAKE_SOURCE_DIR@"
+DOCKER_BUILD_DIR="$PROJECT_DIR/docker-build"
+
+if [[ -z "$PROJECT_DIR" || "$PROJECT_DIR" == "/" ]]; then
+    echo "Error: PROJECT_DIR is not set or invalid!"
+    exit 1
+fi
+
+if [[ -z "$1" ]]; then
+    echo "Error: No OS name provided!"
+    echo "Usage: $0 <os_name>"
+    echo "Available options:"
+    ls "$DOCKER_BUILD_DIR"
+    exit 1
+fi
+
+
+OS_NAME="$1"
+BUILD_DIR_PARENT="$DOCKER_BUILD_DIR/$OS_NAME"
+BUILD_DIR="$BUILD_DIR_PARENT/build"
+CONTAINER_NAME="temp-container"
+IMAGE_NAME="gfmengine-builder-$OS_NAME"
+
+if [[ ! -d "$BUILD_DIR_PARENT" ]]; then
+    echo "Error: Invalid OS name '$OS_NAME'. No matching folder found in $DOCKER_BUILD_DIR."
+    echo "Available options:"
+    ls "$DOCKER_BUILD_DIR"
+    exit 1
+fi
+
+if [[ -z "$BUILD_DIR" || "$BUILD_DIR" == "/" ]]; then
+    echo "Error: BUILD_DIR is not set or invalid!"
+    exit 1
+fi
+
+
+# Build the Docker image
+docker build -t "$IMAGE_NAME" -f "$BUILD_DIR_PARENT/Dockerfile" "$PROJECT_DIR"
+
+# Prune old images
+docker image prune -f
+
+# Run the container
+docker run --name "$CONTAINER_NAME" "$IMAGE_NAME"
+
+# Ensure the build directory exists before deleting
+if [[ -d "$BUILD_DIR" ]]; then
+    rm -rf "$BUILD_DIR"
+fi
+
+# Copy build artifacts
+docker cp "$CONTAINER_NAME:/app/build" "$BUILD_DIR_PARENT"
+
+# Clean up the container
+docker rm "$CONTAINER_NAME"
+
+echo "Build completed for $OS_NAME. Artifacts are in $BUILD_DIR_PARENT."
