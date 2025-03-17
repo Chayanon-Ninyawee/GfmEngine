@@ -2,7 +2,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build TestGfmEngine (Debug)",
+            "label": "Build GfmEngineTest (Debug)",
             "type": "shell",
             "command": "cmake",
             "args": [
@@ -20,7 +20,7 @@
             ]
         },
         {
-            "label": "Build TestGfmEngine (Release)",
+            "label": "Build GfmEngineTest (Release)",
             "type": "shell",
             "command": "cmake",
             "args": [
@@ -38,7 +38,7 @@
             ]
         },
         {
-            "label": "Build TestGfmEngine With Docker (Release)",
+            "label": "Build GfmEngineTest With Docker (Release)",
             "type": "shell",
             "command": "@CMAKE_SOURCE_DIR@/build-ubuntu20-docker.sh",
             "problemMatcher": []
