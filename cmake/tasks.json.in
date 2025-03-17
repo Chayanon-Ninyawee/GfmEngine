@@ -40,7 +40,7 @@
         {
             "label": "Build TestGfmEngine With Docker (Release)",
             "type": "shell",
-            "command": "docker build -t gfmengine-builder @CMAKE_SOURCE_DIR@ && docker image prune -f && docker run --name temp-container gfmengine-builder && rm -rf @CMAKE_SOURCE_DIR@/ubuntu20/build && mkdir @CMAKE_SOURCE_DIR@/ubuntu20 || true && docker cp temp-container:/app/build @CMAKE_SOURCE_DIR@/ubuntu20/build && docker rm temp-container",
+            "command": "@CMAKE_SOURCE_DIR@/build-ubuntu20-docker.sh",
             "problemMatcher": []
         }
     ]

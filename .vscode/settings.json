@@ -10,6 +10,7 @@
         "*.json.in": "json",
         "*.vs.json.in": "json",
         "*.cmake.in": "cmake",
+        "*.sh.in": "shellscript",
         "iostream": "cpp",
         "cctype": "cpp",
         "clocale": "cpp",
