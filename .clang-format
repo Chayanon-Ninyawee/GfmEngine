@@ -27,20 +27,23 @@ BraceWrapping:
   SplitEmptyRecord: false
   SplitEmptyNamespace: false
 
-AllowShortFunctionsOnASingleLine: All
+NamespaceIndentation: Inner
+WrapNamespaceBodyWithEmptyLines: Always
+AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: WithoutElse
 AllowShortLambdasOnASingleLine: All
 AllowShortCaseExpressionOnASingleLine: true
 AlignAfterOpenBracket: BlockIndent
 AllowAllArgumentsOnNextLine: false
-BinPackArguments: true
-BinPackParameters: true
+BinPackArguments: false
+BinPackParameters: OnePerLine
+AllowAllParametersOfDeclarationOnNextLine: false
 PenaltyBreakBeforeFirstCallParameter: 0
 PenaltyReturnTypeOnItsOwnLine: 1000
 
 # Constructor formatting
 BreakConstructorInitializers: BeforeComma
-ConstructorInitializerAllOnOneLineOrOnePerLine: false
+PackConstructorInitializers: Never
 
 # Alignment and spacing
 SpacesBeforeTrailingComments: 2
