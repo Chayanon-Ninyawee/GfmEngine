@@ -2,10 +2,16 @@
 
 #include <iostream>
 
-GfmEngine::GfmEngine(const std::string &title, unsigned int width, unsigned int height)
+GfmEngine::GfmEngine(
+    const std::string &title,
+    unsigned int width,
+    unsigned int height,
+    unsigned int updateFrequency
+)
     : windowTitle(title)
     , windowWidth(width)
     , windowHeight(height)
+    , updateFrequency(updateFrequency)
     , isRunning(false)
     , isStopped(true) {}
 
@@ -21,7 +27,6 @@ void GfmEngine::init() {
         sf::VideoMode({this->windowWidth, this->windowHeight}),
         this->windowTitle
     );
-    window.setVerticalSyncEnabled(true);
 }
 
 void GfmEngine::processInput() {
@@ -44,7 +49,7 @@ void GfmEngine::run() {
     setup();
 
     sf::Clock clock;
-    constexpr float timeStep = 1.0f / 60.0f;  // 60 updates per second
+    const float timeStep = 1.0f / updateFrequency;
     float accumulatedTime = 0.0f;
 
     while (isRunning) {

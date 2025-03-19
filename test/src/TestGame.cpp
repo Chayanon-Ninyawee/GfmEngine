@@ -3,12 +3,12 @@
 #include "TestGame.h"
 
 TestGame::TestGame()
-    : GfmEngine("2D Game", 800, 600) {}
+    : GfmEngine("2D Game", 800, 600, 60) {}
 
 TestGame::~TestGame() {}
 
 void TestGame::setup() {
-    // window.setPosition({400, 300});
+    window.setVerticalSyncEnabled(true);
 }
 
 void TestGame::update(float deltaTime) {

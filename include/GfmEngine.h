@@ -7,7 +7,12 @@
 class GfmEngine
 {
 public:
-    GfmEngine(const std::string &title, unsigned int width, unsigned int height);
+    GfmEngine(
+        const std::string &title,
+        unsigned int width,
+        unsigned int height,
+        unsigned int updateFrequency
+    );
     ~GfmEngine();
 
     void run();
@@ -16,7 +21,7 @@ public:
     virtual void update(float deltaTime) = 0;
     virtual void render() = 0;
 
-    // TODO: This is temporary
+protected:
     sf::RenderWindow window;
 
 private:
@@ -27,6 +32,9 @@ private:
     std::string windowTitle;
     unsigned int windowWidth;
     unsigned int windowHeight;
+
+    const unsigned int updateFrequency;
+
     bool isRunning;
     bool isStopped;
 };
