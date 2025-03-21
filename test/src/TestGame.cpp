@@ -1,5 +1,10 @@
 #include <iostream>
 
+#include "Components/TransformComponent.h"
+#include "Components/VelocityComponent.h"
+#include "ECSCore/EntityManager.h"
+#include "Systems/MovementSystem.h"
+
 #include "TestGame.h"
 
 TestGame::TestGame()
@@ -9,27 +14,26 @@ TestGame::~TestGame() {}
 
 void TestGame::setup() {
     window.setVerticalSyncEnabled(true);
+
+    EntityManager &entityManager = EntityManager::getInstance();
+
+    // TODO: This is just a test
+    testBoxPtr = entityManager.addEntity(Entity::Tag::None);
+    testBoxPtr->addComponent<TransformComponent>(sf::Vector2f({0.0f, 0.0f}));
+    testBoxPtr->addComponent<VelocityComponent>(sf::Vector2f({200.0f, 200.0f}));
 }
 
 void TestGame::update(float deltaTime) {
-    float speed = 200.0f;  // Pixels per second
-    testRectPosition.x += speed * deltaTime;
-
-    if (testRectPosition.x >= 800) {
-        testRectPosition.x = -100;
-        testRectPosition.y += 50;
-    }
-    if (testRectPosition.y >= 600) {
-        testRectPosition.y = 0;
-    }
+    MovementSystem::update(deltaTime);
 }
 
 void TestGame::render() {
+    // TODO: This is just a test
     sf::RectangleShape rectangle;
     rectangle.setSize({100, 50});
     rectangle.setFillColor(sf::Color::Red);
     rectangle.setOutlineThickness(0);
-    rectangle.setPosition(testRectPosition);  // Use updated position
+    rectangle.setPosition(testBoxPtr->getComponent<TransformComponent>().position);
 
     this->window.draw(rectangle);
 }

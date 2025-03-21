@@ -41,9 +41,10 @@ AllowAllParametersOfDeclarationOnNextLine: false
 PenaltyBreakBeforeFirstCallParameter: 0
 PenaltyReturnTypeOnItsOwnLine: 1000
 
-# Constructor formatting
+# Formatting
 BreakConstructorInitializers: BeforeComma
 PackConstructorInitializers: Never
+BreakTemplateDeclarations: Yes
 
 # Alignment and spacing
 SpacesBeforeTrailingComments: 2

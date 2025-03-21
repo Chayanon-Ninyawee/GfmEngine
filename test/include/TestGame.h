@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ECSCore/Entity.h"
+
 #include "GfmEngine.h"
 
 class TestGame : public GfmEngine
@@ -13,5 +15,5 @@ private:
     void update(float deltaTime) override;
     void render() override;
 
-    sf::Vector2f testRectPosition = {-100, 0};
+    std::shared_ptr<Entity> testBoxPtr;
 };
